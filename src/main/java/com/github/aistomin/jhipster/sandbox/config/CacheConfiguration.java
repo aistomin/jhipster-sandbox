@@ -44,6 +44,7 @@ public class CacheConfiguration {
             createCache(cm, com.github.aistomin.jhipster.sandbox.domain.User.class.getName() + ".authorities");
             createCache(cm, com.github.aistomin.jhipster.sandbox.domain.PersistentToken.class.getName());
             createCache(cm, com.github.aistomin.jhipster.sandbox.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.github.aistomin.jhipster.sandbox.domain.MyFirstEntity.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,24 @@
+{
+  "jhipsterApp": {
+    "myFirstEntity": {
+      "home": {
+        "title": "My First Entities",
+        "createLabel": "Create a new My First Entity",
+        "createOrEditLabel": "Create or edit a My First Entity",
+        "notFound": "No My First Entities found"
+      },
+      "created": "A new My First Entity is created with identifier {{ param }}",
+      "updated": "A My First Entity is updated with identifier {{ param }}",
+      "deleted": "A My First Entity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete My First Entity {{ id }}?"
+      },
+      "detail": {
+        "title": "My First Entity"
+      },
+      "stringField": "String Field",
+      "dateCreated": "Date Created",
+      "someNumber": "Some Number"
+    }
+  }
+}

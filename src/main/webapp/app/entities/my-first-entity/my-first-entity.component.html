@@ -1,0 +1,55 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterApp.myFirstEntity.home.title">My First Entities</span>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="myFirstEntities?.length === 0">
+        <span jhiTranslate="jhipsterApp.myFirstEntity.home.notFound">No myFirstEntities found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="myFirstEntities?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="stringField"><span jhiTranslate="jhipsterApp.myFirstEntity.stringField">String Field</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateCreated"><span jhiTranslate="jhipsterApp.myFirstEntity.dateCreated">Date Created</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="someNumber"><span jhiTranslate="jhipsterApp.myFirstEntity.someNumber">Some Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let myFirstEntity of myFirstEntities ;trackBy: trackId">
+                    <td><a [routerLink]="['/my-first-entity', myFirstEntity.id, 'view']">{{ myFirstEntity.id }}</a></td>
+                    <td>{{ myFirstEntity.stringField }}</td>
+                    <td>{{ myFirstEntity.dateCreated | date:'mediumDate' }}</td>
+                    <td>{{ myFirstEntity.someNumber }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/my-first-entity', myFirstEntity.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="myFirstEntities?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
